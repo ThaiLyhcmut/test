@@ -87,16 +87,16 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ idToken: idToken }) // Gửi ID Token trong body
-        }).then(res => res.json()).then(data => console.log(data));
+        })
 
-        if (response.ok) {
-          console.log('ID Token đã được gửi thành công.');
-        } else {
-          const errorResponse = await response.text();
-          console.error('Lỗi khi gửi ID Token:', errorResponse);
-        }
+        const data = await response.json();
+        console.log(data); // In ra phản hồi từ máy chủ
+
+        // Lấy cookie từ document.cookie
+        const cookies = document.cookie; // Hoặc sử dụng hàm getCookie nếu cần
+        console.log('Cookies:', cookies);
       } catch (error) {
-        console.error('Error sending ID Token:', error);
+        console.error('Lỗi khi gửi ID Token:', error);
       }
     }
 
