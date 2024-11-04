@@ -88,14 +88,8 @@
           },
           credentials: 'include', // Đảm bảo rằng cookie sẽ được gửi
           body: JSON.stringify({ idToken: idToken }) // Gửi ID Token trong body
-        })
-
-        if (response.ok) {
-          console.log('ID Token đã được gửi thành công.');
-        } else {
-          const errorResponse = await response.text();
-          console.error('Lỗi khi gửi ID Token:', errorResponse);
-        }
+        }).then(response => response.json())
+.then(data => console.log(data));
       } catch (error) {
         console.error('Error sending ID Token:', error);
       }
