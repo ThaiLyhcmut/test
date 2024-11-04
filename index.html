@@ -87,7 +87,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ idToken: idToken }) // Gửi ID Token trong body
-        });
+        }).then(res => res.json()).then(data => console.log(data));
 
         if (response.ok) {
           console.log('ID Token đã được gửi thành công.');
